@@ -1,0 +1,13 @@
+# Local environment variables
+.env
+
+# Persistent Minecraft server data (worlds, jars, logs, cache, runtime plugins)
+data/
+
+# World backups (keep directory structure)
+backups/*
+!backups/.gitkeep
+
+# Custom plugins (keep directory structure)
+plugins/*
+!plugins/.gitkeep
