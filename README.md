@@ -4,6 +4,27 @@ A containerized, production-ready Minecraft server supporting simultaneous cross
 
 ---
 
+## Prerequisites
+
+Before starting the server, ensure your machine meets the following requirements:
+
+- **Docker & Docker Compose**:
+  - **Linux**: [Docker Engine](https://docs.docker.com/engine/install/) + Docker Compose plugin (`docker compose`) or standalone `docker-compose`. Ensure the Docker daemon is running and your user has permission to run `docker` commands.
+  - **Windows / macOS**: [Docker Desktop](https://www.docker.com/products/docker-desktop/) (includes Docker Engine and Docker Compose).
+- **Memory (RAM)**: At least **6 GB total RAM** recommended (**4 GB** is allocated to the JVM by default via `MEMORY=4G` in `.env`, plus overhead for the OS and container).
+- **Disk Space**: At least **2–5 GB** free space for the container image, PaperMC, plugins, world data, and backups.
+- **Internet Access (First Run / Updates)**: Required to pull `itzg/minecraft-server:latest`, PaperMC, and the official GeyserMC & Floodgate plugins.
+- **Available Ports**:
+  - `25565/TCP` — Java Edition
+  - `19132/UDP` & `19132/TCP` — Bedrock Edition (GeyserMC)
+  - `127.0.0.1:25575/TCP` — RCON console (localhost only)
+- **Shell / Runtime**:
+  - **Linux / macOS**: `bash` (and `tar` for `./server.sh backup`).
+  - **Windows**: Command Prompt (`server.bat`) or PowerShell (`server.ps1`).
+- **Environment File (`.env`)**: Automatically created from `.env.example` on first run if missing (update `RCON_PASSWORD` before exposing the server).
+
+---
+
 ## 1. Why this Architecture is the Most Reliable
 
 The setup uses **PaperMC** as the base server, combined with **GeyserMC** and **Floodgate** as server-side plugins inside Docker:
